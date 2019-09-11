@@ -1,0 +1,42 @@
+.input-row {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+#modelButton {
+  margin: 40px 0 10px 0;
+}
+
+.deleteImage {
+  z-index: 999;
+  position: absolute;
+  margin: 0 0 0 0;
+  background: red;
+  color: white;
+  border-radius: 20px;
+}
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.tooltip-red {
+  background: #b71c1c;
+}
+
+.imageUpload {
+  margin-bottom: 20px !important;
+}
+
+@media (min-width: 768px) {
+  .input-row {
+    margin-bottom: -40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .input-row {
+    margin-bottom: -20px;
+  }
+}

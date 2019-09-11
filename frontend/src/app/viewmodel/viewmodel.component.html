@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-content>
+    <mat-icon class="modalclose" matDialogClose>close</mat-icon>
+    <p># {{ model.id }}</p>
+    <p>Manufacturer : {{ model.manufacturer }}</p>
+    <p>Model : {{ model.name }}</p>
+    <p>Color : {{ model.color }}</p>
+    <p>manufacturingyear : {{ model.manufacturingyear }}</p>
+    <p>registrationnumber : {{ model.registrationnumber }}</p>
+    <p>Note : {{ model.note }}</p>
+    <p>Stock : {{ model.stock }}</p>
+
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="30px" fxLayoutGap.lt-md="0px">
+        <div fxFlex>
+          <p>Image1 : <img *ngIf="image1; else elseBlock1" mat-card-image src="{{ image1 }}">
+            <ng-template #elseBlock1>Image1 not uploaded</ng-template>
+          </p>
+        </div>
+        <div fxFlex>
+          <p>Image2 : <img *ngIf="image2; else elseBlock2" mat-card-image src="{{ image2 }}">
+            <ng-template #elseBlock2>Image2 not uploaded</ng-template>
+          </p>
+        </div>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="sell(model)">Sold</button>
+  </mat-card-content>
+</mat-card>

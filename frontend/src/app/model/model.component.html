@@ -1,0 +1,79 @@
+<form fxLayout="column" #ModelComponent (ngSubmit)="submit()" role="form" [formGroup]="modelForm"
+	class="manufacturer-form" enctype="multipart/form-data">
+	<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+		<mat-form-field fxFlex>
+			<mat-label>Manufacturer</mat-label>
+			<mat-select (click)="getManufactures()" [(ngModel)]='model.manufacturer'
+				[formControl]="manufacturerFormControl">
+				<mat-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">{{ manufacturer.name }}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="manufacturerFormControl.invalid">{{getManufacturerError('manufacturer')}}</mat-error>
+		</mat-form-field>
+		<mat-icon matTooltip="Add Manufacturer" matTooltipClass="tooltip-red" color="primary" (click)="addManufacturer()">add_box</mat-icon>
+		<mat-form-field fxFlex>
+			<mat-label>Model Name</mat-label>
+			<input matInput #input class='form-control' [(ngModel)]='model.name' [formControl]="nameFormControl" />
+			<mat-error *ngIf="nameFormControl.invalid">{{getNameError('name')}}</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="30px" fxLayoutGap.lt-md="0px">
+		<mat-form-field fxFlex>
+			<mat-label>Color</mat-label>
+			<input matInput #input class='form-control' [(ngModel)]='model.color' [formControl]="colorFormControl" />
+			<mat-error *ngIf="colorFormControl.invalid">{{getColorError('color')}}</mat-error>
+		</mat-form-field>
+
+		<mat-form-field fxFlex>
+			<mat-label>Manufacturing Year</mat-label>
+			<mat-select [(ngModel)]='model.manufacturingyear' [formControl]="manufacturingyearFormControl">
+				<mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+			</mat-select>
+			<mat-error *ngIf="manufacturingyearFormControl.invalid">{{getManufacturingYearError('manufacturingyear')}}
+			</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="30px" fxLayoutGap.lt-md="0px">
+		<mat-form-field fxFlex>
+			<mat-label>Registration Number</mat-label>
+			<input matInput #input class='form-control' [(ngModel)]='model.registrationnumber'
+				[formControl]="registrationnumberFormControl" />
+			<mat-error *ngIf="registrationnumberFormControl.invalid">
+				{{getRegistrationNumberError('registrationnumber')}}</mat-error>
+		</mat-form-field>
+		<mat-form-field fxFlex>
+			<mat-label>Note</mat-label>
+			<input matInput #input class='form-control' [(ngModel)]='model.note' [formControl]="noteFormControl" />
+			<mat-error *ngIf="noteFormControl.invalid">{{getNoteError('note')}}</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="30px" fxLayoutGap.lt-md="0px">
+		<mat-form-field fxFlex>
+			<mat-label>Stock</mat-label>
+			<input type="number" matInput #input class='form-control' [(ngModel)]='model.stock'
+				[formControl]="stockFormControl" />
+			<mat-error *ngIf="stockFormControl.invalid">{{getStockError('stock')}}</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="30px" fxLayoutGap.lt-md="0px">
+		<div class="imageUpload" fxFlex>
+			<mat-label>Image 1 : </mat-label>
+			<input #image1Input type="file" name="image1" (change)="handleImage1($event.target.files)"
+				accept=".jpeg,.png,.jpg">
+		</div>
+		<div fxFlex *ngIf="image1">
+			<mat-icon (click)="deleteImage1(dimage1)" class="deleteImage">close</mat-icon>
+			<img src="{{ image1 }}" />
+		</div>
+		<div fxFlex>
+			<mat-label>Image 2 : </mat-label>
+			<input #image2Input type="file" (change)="handleImage2($event.target.files)" name="image2" class="ng-hide"
+				accept=".jpeg,.png,.jpg">
+		</div>
+		<div fxFlex *ngIf="image2">
+			<mat-icon (click)="deleteImage2(dimage2)" class="deleteImage">close</mat-icon>
+			<img src="{{ image2 }}" />
+		</div>
+	</div>
+	<button mat-raised-button id="modelButton" color="warn" [type]="submit" [disabled]="modelForm.invalid">Save</button>
+</form>

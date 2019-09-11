@@ -1,0 +1,26 @@
+.modalclose {
+  float: right;
+  cursor: pointer;
+}
+
+.mat-warn {
+  width: 100%;
+}
+
+img.mat-card-image {
+  width: 100%;
+  margin: 0 0 30px 0;
+  height: 134px;
+}
+
+@media (min-width: 768px) {
+ .input-row {
+   margin: -30px 0 -50px 0;
+ }
+}
+
+@media (max-width: 767px) {
+  .input-row {
+    margin: -25px 0 -25px 0;
+  }
+}

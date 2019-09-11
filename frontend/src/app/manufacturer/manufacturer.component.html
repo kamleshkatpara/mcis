@@ -1,0 +1,8 @@
+<mat-icon class="modalclose" matDialogClose>close</mat-icon>
+<form #ManufacturersComponent (ngSubmit)="submit()" #formControl="ngForm" role="form">
+    <mat-form-field>
+      <input matInput #manufacturerInput class='form-control' placeholder='Manufacturer Name' 
+      [(ngModel)]='manufacturer.name' name='manufacturer_name' required />
+    </mat-form-field>
+    <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid">Save</button>
+</form>
